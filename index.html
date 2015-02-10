@@ -10,12 +10,17 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="public/javascripts/app.js"></script>
   <script src="node_modules/angular-route/angular-route.js"></script>
-  <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body ng-app="TodoApp">
   <ul>
-    <li></li>
+    <li> <a href="#/">Reg Todos</a></li>
+    <li> <a href="#/cool_todos">Cool Ass Todos</a></li>
   </ul>
+
+  <div class="container">
+    <ng-view></ng-view>
+  </div>
   
   </div>
 </body>

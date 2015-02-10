@@ -383,20 +383,61 @@ make sure you have the `viewport` settings for bootstrap in your head.
   </body>
   ```
 
+## Add A Service
 
+  > First we added a second route that was the exact same 
+    as our previous route and we noticed that they weren't sharing data.
 
+    ```javascript
 
+      // We have the following two routes
+      //  that are basically the same.
 
+      $routeProvider.
+      when("/", {
+        templateUrl: "views/root.html",
+        controller: "TodosCtrl"
+      }).
+      when("/cool_todos", {
+        templateUrl: "views/cool_todos",
+        controller: "TodosCtrl"
+      });
 
+    ```
 
+## To fix the problem we added a singleton service that is just
+#  an Array of Todos that can be shared from one controller to the next.
 
+  ```javascript
+  TodoApp.service("Todos", Array);
 
+  // which is equivalent of saying
 
+  TodoApp.factory("Todos", function () {
+    return new Array(); 
+  }); 
 
+  ```
 
+## Adding HTML 5 routes
 
+  We want to use the locationProvider to get
+  rid of the '#' sign, but if we that we will 
+  loser our applications compatibility with Github Pages.
 
+  > WE do not have control over their router, we cannot use a catch-all route
 
+## Using Local-Storage to Persist Data
+
+  > localStorage.getItem("foo")
+  --- null
+  >localStorage.setItem("foo", JSON.stringify([1,2,3,4]))
+
+  >localStorage.getItem
+
+ // when you access it again... you must parse the string to make into an array
+
+  >JSON.parse(localStorage.getItem("foo"))
 
 
 
