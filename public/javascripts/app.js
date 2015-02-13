@@ -59,8 +59,6 @@ TodoApp.controller("TodosCtrl", ["$scope", "Todos", function ($scope, Todos) {
   };
 
   $scope.edit     = function () {
-    Todos.remove(this.todo);
-    Todos.add(this.todo);
     this.editing = true;
   };
 	$scope.update 	= function () {
