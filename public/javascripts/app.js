@@ -18,52 +18,53 @@ TodoApp.config(["$routeProvider", "$locationProvider",
 // Adding localStorage to persist data on a front-end
 // application. 
 
-TodoApp.factory("Todos", function () {
-  var todoString = localStorage.getItem("todos");
-  if (todoString) {
-    todos = JSON.parse(todoString);
-  } else {
-    todos = [];
-  };
+// TodoApp.factory("Todos", function () {
+//   var todoString = localStorage.getItem("todos");
+//   if (todoString) {
+//     todos = JSON.parse(todoString);
+//   } else {
+//     todos = [];
+//   };
 
-  return {
-    add: function (todo) {
-      todos.push(todo);
-      localStorage.setItem("todos", JSON.stringify(todos));
-    },
-    remove: function (todo) {
-      var index = todos.indexOf(todo);
-      todos.splice(indexOf, 1);
-      localStorage.setItem("todos", JSON.stringify(todos));
-    },
-    all: function () {
-      return todos;
-    }
-  }
-});
+//   return {
+//     add: function (todo) {
+//       todos.push(todo);
+//       localStorage.setItem("todos", JSON.stringify(todos));
+//     },
+//     remove: function (todo) {
+//       var index = todos.indexOf(todo);
+//       todos.splice(indexOf, 1);
+//       localStorage.setItem("todos", JSON.stringify(todos));
+//     },
+//     all: function () {
+//       return todos;
+//     }
+//   }
+// });
 // Gives you the array
 // Factories, Services, etc. are Singletons!!
 // TodoApp.service("Todos", Array);
+TodoApp.service("Todos", Array);
 
 TodoApp.controller("TodosCtrl", ["$scope", "Todos", function ($scope, Todos) {
-  $scope.todos    = Todos.all();
+  $scope.todos    = Todos;
   $scope.newTodo  = {};
 
   $scope.addTodo  = function () {
-    Todos.add($scope.newTodo);
+    $scope.todos.push($scope.newTodo);
     $scope.newTodo = {};
   };
 
   $scope.delete   = function () {
-    Todos.remove(this.todo);
+    var index = $scope.todos.indexOf(this.todo);
+    $scope.todos.splice(index, 1);
   };
 
   $scope.edit     = function () {
-    Todos.remove(this.todo);
-    Todos.add(this.todo);
     this.editing = true;
   };
-	$scope.update 	= function () {
-		this.editing	= false;
-	}  
+
+  $scope.update   = function () {
+    this.editing = false;
+  };
 }]);
