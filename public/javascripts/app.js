@@ -9,7 +9,7 @@ TodoApp.config(["$routeProvider", "$locationProvider",
         templateUrl: "views/root.html",
         controller: "TodosCtrl"
       }).
-      when("/cool_todos", {
+      when("#/cool_todos", {
         templateUrl: "views/cool_todos",
         controller: "TodosCtrl"
       });
@@ -55,7 +55,9 @@ TodoApp.controller("TodosCtrl", ["$scope", "Todos", function ($scope, Todos) {
   };
 
   $scope.delete   = function () {
-    Todos.remove(this.todo);
+    var index = $scope.todos.indexOf(this.todo);
+    $scope.todos.splice(index, 1)
+    // Todos.remove(this.todo);
   };
 
   $scope.edit     = function () {
