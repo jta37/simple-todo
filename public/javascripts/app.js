@@ -9,7 +9,7 @@ TodoApp.config(["$routeProvider", "$locationProvider",
         templateUrl: "views/root.html",
         controller: "TodosCtrl"
       }).
-      when("/cool_todos", {
+      when("#/cool_todos", {
         templateUrl: "views/cool_todos",
         controller: "TodosCtrl"
       });
