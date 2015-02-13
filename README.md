@@ -229,19 +229,19 @@ Let' try adding an edit form to our view to edit the todo.
       </div>
     </form>
     <div>
-
+```
       <div ng-repeat="todo in todos track by $index">
         <div ng-hide="editing">
           {{todo.content}}
         </div>
-
+```
         <form ng-submit="update()" ng-show="editing">
           <textarea ng-model="todo.content"></textarea>
           <div>
             <button>Update</button>
           </div>
         </form>
-
+```
         <div ng-hide="editing">
           <button ng-click="delete()">Delete</button><button ng-click="edit()">Edit</button>
         </div>
@@ -337,7 +337,7 @@ make sure you have the `viewport` settings for bootstrap in your head.
   
   `view/root.html`
 
-  ```html
+```html
 
       <form ng-submit="addTodo()">
         <div>
@@ -373,7 +373,7 @@ make sure you have the `viewport` settings for bootstrap in your head.
 
 * We want to refactor our `index.html` to look like the following
 
-  ```html
+```html
 
   <body ng-app="TodoApp">
 
@@ -381,7 +381,7 @@ make sure you have the `viewport` settings for bootstrap in your head.
       <ng-view></ng-view>
     </div>
   </body>
-  ```
+```
 
 ## Add A Service
 

@@ -9,6 +9,9 @@
       </form>
       <div>
 
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- list todo's by index -->
         <div ng-repeat="todo in todos track by $index">
           <div ng-hide="editing">
             {{todo.content}}
@@ -25,6 +28,8 @@
             <button ng-click="delete()">Delete</button><button ng-click="edit()">Edit</button>
           </div>
         </div>
+      </div>
+    </div>
 
       </div>
     </div>
